@@ -969,6 +969,7 @@ void tp_init() {
   OCR0B = 128;
   TIMSK0 |= BIT(OCIE0B);
 
+
   // Wait for temperature measurement to settle
   delay(250);
 
@@ -988,6 +989,7 @@ void tp_init() {
       else \
         maxttemp_raw[NR] += OVERSAMPLENR; \
     }
+    
 
   #ifdef HEATER_0_MINTEMP
     TEMP_MIN_ROUTINE(0);
@@ -1019,7 +1021,8 @@ void tp_init() {
       #endif // EXTRUDERS > 3
     #endif // EXTRUDERS > 2
   #endif // EXTRUDERS > 1
-
+  
+  #ifdef AYXX_DONOTBLOCK
   #ifdef BED_MINTEMP
     while(analog2tempBed(bed_minttemp_raw) < BED_MINTEMP) {
       #if HEATER_BED_RAW_LO_TEMP < HEATER_BED_RAW_HI_TEMP
@@ -1038,6 +1041,10 @@ void tp_init() {
       #endif
     }
   #endif //BED_MAXTEMP
+  #endif // AYXX_DONOTBLOCK
+
+  // while (1) { WRITE(HOME_LED, READ(Z_HOME_PIN)); }
+
 }
 
 #if ENABLED(THERMAL_PROTECTION_HOTENDS)

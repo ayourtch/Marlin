@@ -40,7 +40,7 @@
 #if ENABLED(RAMPS_V_1_0) // RAMPS_V_1_0
   #define HEATER_0_PIN     12    // RAMPS 1.0
   #define HEATER_BED_PIN   -1    // RAMPS 1.0
-  #define FAN_PIN          11    // RAMPS 1.0
+  #define FAN_PIN           11    // RAMPS 1.0
 #else // RAMPS_V_1_1 or RAMPS_V_1_2
   #define HEATER_0_PIN     10    // RAMPS 1.1
   #define HEATER_BED_PIN    8    // RAMPS 1.1

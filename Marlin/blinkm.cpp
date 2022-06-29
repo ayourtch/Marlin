@@ -335,6 +335,11 @@ void LoadFilament(void)
       {
         protect_time = millis();
         setTargetHotend0(220);
+        {
+          //AYXX
+          if (key&0x01) { fanSpeed  = 0; }
+          if (key&0x02) { fanSpeed  = 255; }
+        }
         if(key&0x01){BLINKRETRACT_LED(LED_BLINK_7);BLINKFEED_LED(LED_OFF);key_flag = 2;}
         if(key&0x02){BLINKFEED_LED(LED_BLINK_7);BLINKRETRACT_LED(LED_OFF);key_flag = 3;}
         filament_status++;

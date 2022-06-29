@@ -649,17 +649,25 @@ void setup() {
   pinMode(PRINT_LED, OUTPUT);
   pinMode(PRINT_START_PIN, INPUT_PULLUP);
 
+  // WRITE(PRINT_LED, 1); // AYXX
+
   pinMode(FEED_PIN, INPUT_PULLUP);
   pinMode(FEED_LED, OUTPUT);
   WRITE(FEED_LED, 1);
+  // WRITE(FEED_LED, 0); // AYXX
 
   pinMode(RETRACT_PIN, INPUT_PULLUP);
   pinMode(RETRACT_LED, OUTPUT);
-  WRITE(RETRACT_LED, 1);
+  WRITE(RETRACT_LED, 1); // AYXX
+  // WRITE(RETRACT_LED, 0);
 
   pinMode(Z_HOME_PIN, INPUT_PULLUP);
   pinMode(HOME_LED, OUTPUT);
-  WRITE(HOME_LED, 1);
+  WRITE(HOME_LED, 1); // AYXX
+
+  // while (1) { WRITE(HOME_LED, READ(Z_HOME_PIN)); }
+
+  // WRITE(HOME_LED, 0);
 
   BLINK_LED(4000);
 
@@ -709,11 +717,17 @@ void setup() {
 
   // loads data from EEPROM if available else uses defaults (and resets step acceleration rate)
   Config_RetrieveSettings();
+  
 
-  lcd_init();
+  // AYXX lcd_init();
 
   tp_init();    // Initialize temperature loop
+
+  
   plan_init();  // Initialize planner;
+
+  // AYXX while (1) { WRITE(HOME_LED, READ(Z_HOME_PIN)); }
+
 
   #if ENABLED(USE_WATCHDOG)
     watchdog_init();
@@ -742,6 +756,8 @@ void setup() {
 
 
   setup_homepin();
+  /// while (1) { WRITE(HOME_LED, READ(Z_HOME_PIN)); }
+
 
 //  MYSERIAL.print(z_height_stop);
 }
@@ -757,6 +773,16 @@ void setup() {
  *  - Call LCD update
  */
 void loop() {
+  static int counter = 0;
+  static int led_value = 0;
+  counter++;
+
+  if (counter++ > 1000) {
+    counter = 0;
+    led_value = 1 - led_value;
+    WRITE(HOME_LED, led_value);
+  }
+  
   if (commands_in_queue < BUFSIZE - 1) get_command();
 
   #if ENABLED(SDSUPPORT)
@@ -6937,6 +6963,8 @@ void disable_all_steppers() {
  * Standard idle routine keeps the machine alive
  */
 void idle() {
+  WRITE(HOME_LED, READ(Z_HOME_PIN));
+
   manage_heater();
   manage_inactivity();
   //lcd_update();
