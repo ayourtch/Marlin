@@ -101,4 +101,3 @@
   //not connected to a pin
   #define SD_DETECT_PIN 49
 #endif //Minipanel
-

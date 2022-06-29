@@ -23,7 +23,7 @@
 
 
 /*
-#define PRINT_START_PIN    30        //¿ªÊ¼´òÓ¡¼ü
+#define PRINT_START_PIN    30        //ï¿½ï¿½Ê¼ï¿½ï¿½Ó¡ï¿½ï¿½
 #define PRINT_LED          17
 
 #define Z_HOME_PIN           29
@@ -35,7 +35,7 @@
 #define RETRACT_PIN        27
 #define RETRACT_LED        10 */
 
-#define PRINT_START_PIN    27        //¿ªÊ¼´òÓ¡¼ü
+#define PRINT_START_PIN    27        //ï¿½ï¿½Ê¼ï¿½ï¿½Ó¡ï¿½ï¿½
 #define PRINT_LED          10
 
 #define Z_HOME_PIN         30

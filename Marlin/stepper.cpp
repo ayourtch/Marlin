@@ -623,7 +623,7 @@ ISR(TIMER1_COMPA_vect) {
     return;
   }
 
-  if ((print_pause==1) && (current_block->steps[Z_AXIS]==0)) { //Èç¹û´òÓ¡ÔİÍ££¬²»·¢Âö³å
+  if ((print_pause==1) && (current_block->steps[Z_AXIS]==0)) { //ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     //current_block->nominal_rate *= 0.3;
     acceleration_time  = 0;
     acc_step_rate = current_block->initial_rate;

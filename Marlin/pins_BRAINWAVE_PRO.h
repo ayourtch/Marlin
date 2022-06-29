@@ -62,4 +62,3 @@
   #define MISO_PIN         23
   #define MOSI_PIN         22
 #endif
-

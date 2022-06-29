@@ -81,4 +81,3 @@
   #define SD_DETECT_PIN    -1
 
 #endif // ULTRA_LCD && NEWPANEL
-
