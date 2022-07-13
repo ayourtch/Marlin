@@ -65,7 +65,7 @@ typedef unsigned long millis_t;
 #endif
 
 #define SERIAL_CHAR(x) MYSERIAL.write(x)
-#define SERIAL_EOL SERIAL_CHAR('\n')
+#define SERIAL_EOL do { SERIAL_CHAR('\n'); SERIAL_CHAR('\r'); } while (0)
 
 #define SERIAL_PROTOCOLCHAR(x) SERIAL_CHAR(x)
 #define SERIAL_PROTOCOL(x) MYSERIAL.print(x)

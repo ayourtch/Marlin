@@ -646,7 +646,7 @@ void manage_heater() {
         // Has it failed to increase enough?
         if (degHotend(e) < watch_target_temp[e]) {
           // Stop!
-          _temp_error(e, PSTR(MSG_T_HEATING_FAILED), PSTR(MSG_HEATING_FAILED_LCD));
+          // _temp_error(e, PSTR(MSG_T_HEATING_FAILED), PSTR(MSG_HEATING_FAILED_LCD));
         }
         else {
           // Start again if the target is still far off

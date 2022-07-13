@@ -7160,6 +7160,7 @@ void kill(const char* lcd_msg) {
     pinMode(PS_ON_PIN, INPUT);
   #endif
 
+  SERIAL_ERRORLN(lcd_msg);
   SERIAL_ERROR_START;
   SERIAL_ERRORLNPGM(MSG_ERR_KILLED);
 

@@ -182,6 +182,7 @@ void PrintOneKey(void)
       {
         if(print_key_flag == 0) //<1>第一次打印键是选择文件开始打印
         {
+          /* 
           card.initsd();
           if(card.cardOK==false)
           {
@@ -202,17 +203,23 @@ void PrintOneKey(void)
           }
           card.openFile(card.filename,true);
           card.startFileprint();
+          */
+          SERIAL_ECHOLNPGM("Printing AYXX");
           BLINK_LED(LED_BLINK_2);
-          print_key_flag = 1;
+          /* print_key_flag = 1;
           key_flag = 4;
+          */
         }
         else if(print_key_flag == 1)//<2>第二次短按键是暂停打印 
         {
+          SERIAL_ECHOLNPGM("Printing paused");
           //MYSERIAL.print("pause");
           BLINK_LED(LED_ON);
+          /*
           card.pauseSDPrint();
           print_pause = 1;
           print_key_flag = 2;
+          */
         }
         else if(print_key_flag == 2) //<3>第三次按键是暂停后恢复打印
         {
